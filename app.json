@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/top/weibo",
+    "pages/index/index",
+    "pages/delete/weibo"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/top/weibo",
+        "text": "实时热搜"
+      },
+      {
+        "pagePath": "pages/delete/weibo",
+        "text": "惨遭毒手"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "微博热搜",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

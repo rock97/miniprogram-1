@@ -1,0 +1,11 @@
+<!--pages/top/weibo.wxml-->
+<view bindtouchstart='touchStart' bindtouchend="touchEnd"></view>
+
+<view class="" >
+  <view class="banner-item" wx:for-items="{{listTop}}" wx:for-index="idx">
+    <text class="item-sequence">{{idx+1}}</text>
+    <swiper class="item-title-bg" style="width:{{item.heat*100/heatsign}}%"></swiper>
+    <text class="item-title news-item-title {{item.status==2?'item-title-delete':''}}">{{item.title}}</text>
+    <text class="item-heat">{{item.heat}}</text>
+  </view>
+</view>
