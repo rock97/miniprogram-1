@@ -22,7 +22,7 @@ Page({
     var self = this
       wx.request({
         dataType: "json",
-        url: 'http://weibors.zyx/weibo/top',
+        url: 'http://www.weibors.xyz/weibo/top',
         success: function(res){
           wx.hideLoading()
           self.setData({
