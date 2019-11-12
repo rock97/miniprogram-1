@@ -2,13 +2,19 @@
   "pages": [
     "pages/top/weibo",
     "pages/index/index",
-    "pages/delete/weibo"
+    "pages/delete/weibo",
+    "pages/out/out",
+    "pages/burst/burst"
   ],
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/top/weibo",
         "text": "实时热搜"
+      },
+      {
+        "pagePath": "pages/burst/burst",
+        "text": "历史爆点"
       },
       {
         "pagePath": "pages/delete/weibo",

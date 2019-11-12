@@ -1,5 +1,4 @@
-/* pages/delete/weibo.wxss */
-/**index.wxss**/
+/* pages/burst/burst.wxss */
 .banners {
   width: 100%;
   height: 200px;

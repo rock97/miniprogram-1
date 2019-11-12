@@ -1,31 +1,25 @@
-// pages/top/weibo.js
+// pages/out/out.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listTop:[],
-    heatsign:100
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var url = 'https://m.weibo.cn/search?containerid=231522type%3D1%26q%3D%23' + options.src + '%23'
+    //var url = 'https://s.weibo.com/weibo?q=%23' + options.src + '%23&Refer=top'
+
     var self = this
-      wx.request({
-        dataType: "json",
-        url: 'https://sina.app135.cn/weibo/top',
-        success: function(res){
-          wx.hideLoading()
-          self.setData({
-              listTop:res.data,
-              heatsign: res.data[0].heat * 1.45
-          })
-          
-        }
-      })
+    console.log(url)
+    self.setData({
+      src: url
+    })
   },
 
   /**
@@ -39,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.onLoad(); //重新加载onLoad()
+
   },
 
   /**
@@ -60,27 +54,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var that = this;
-    this.onLoad(); //重新加载onLoad()
+
   },
+
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
 
   },
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
-  },
-  goto:function(data){
-    wx.navigateTo({
-      url: '../out/out?src='+data.currentTarget.id, //
-      success: function () {
-        console.log(data.currentTarget.id)
-      }
-      })
   }
 })

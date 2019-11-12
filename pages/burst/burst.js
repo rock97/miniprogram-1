@@ -1,7 +1,6 @@
-// pages/delete/weibo.js
-let day = 1
+// pages/burst/burst.js
+let top_index = 100
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -14,17 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    day = 1
+    top_index = 100
     var self = this
     wx.request({
       dataType: "json",
-      url: 'https://sina.app135.cn/weibo/findDeleteTop?day=' + day,
+      url: 'https://sina.app135.cn/weibo/findHistoryBurst?index=3&top=' + top_index,
       success: function (res) {
         var max = 0;
-        for (var i = 0; i < res.data.length;i++){
+        for (var i = 0; i < res.data.length; i++) {
           var v = res.data[i]
-            if(v.heat > max)
-              max = v.heat
+          if (v.heat > max)
+            max = v.heat
         }
         self.setData({
           listTop: res.data,
@@ -74,11 +73,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    day+=1
+    top_index += 100
     var self = this
     wx.request({
       dataType: "json",
-      url: 'https://sina.app135.cn/weibo/findDeleteTop?day=' + day,
+      url: 'https://sina.app135.cn/weibo/findHistoryBurst?index=3&top=' + top_index,
       success: function (res) {
         var list = self.data.listTop.concat(res.data)
         self.setData({
