@@ -75,7 +75,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goto:function(data){
+  goto1:function(data){
     wx.navigateTo({
       url: '../out/out?src='+data.currentTarget.id, //
       success: function () {

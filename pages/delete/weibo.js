@@ -1,5 +1,6 @@
 // pages/delete/weibo.js
 let day = 1
+let listTopPre = []
 Page({
 
   /**
@@ -30,6 +31,14 @@ Page({
           listTop: res.data,
           heatsign: max * 1.45
         })
+      }
+    })
+    day+=1
+    wx.request({
+      dataType: "json",
+      url: 'https://sina.app135.cn/weibo/findDeleteTop?day=' + day,
+      success: function (res) {
+        listTopPre = res.data
       }
     })
   },
@@ -76,14 +85,15 @@ Page({
   onReachBottom: function () {
     day+=1
     var self = this
+    var list = self.data.listTop.concat(listTopPre)
+    self.setData({
+      listTop: list,
+    })
     wx.request({
       dataType: "json",
       url: 'https://sina.app135.cn/weibo/findDeleteTop?day=' + day,
       success: function (res) {
-        var list = self.data.listTop.concat(res.data)
-        self.setData({
-          listTop: list,
-        })
+        listTopPre = res.data
       }
     })
   },
@@ -94,7 +104,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goto: function (data) {
+  goto1: function (data) {
     wx.navigateTo({
       url: '../out/out?src=' + data.currentTarget.id, //
       success: function () {

@@ -1,5 +1,6 @@
 // pages/burst/burst.js
 let top_index = 100
+let listTopPre = []
 Page({
   /**
    * 页面的初始数据
@@ -29,6 +30,15 @@ Page({
           listTop: res.data,
           heatsign: max * 1.45
         })
+      }
+    })
+    // 预加载
+    top_index +=100
+    wx.request({
+      dataType: "json",
+      url: 'https://sina.app135.cn/weibo/findHistoryBurst?index=3&top=' + top_index,
+      success: function (res) {
+        listTopPre = res.data
       }
     })
   },
@@ -73,16 +83,19 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    top_index += 100
     var self = this
+    var list = self.data.listTop.concat(listTopPre)
+    self.setData({
+      listTop: list,
+    })
+
+    //预加载
+    top_index += 100
     wx.request({
       dataType: "json",
       url: 'https://sina.app135.cn/weibo/findHistoryBurst?index=3&top=' + top_index,
       success: function (res) {
-        var list = self.data.listTop.concat(res.data)
-        self.setData({
-          listTop: list,
-        })
+        listTopPre = res.data
       }
     })
   },
@@ -93,7 +106,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goto: function (data) {
+  goto1: function (data) {
     wx.navigateTo({
       url: '../out/out?src=' + data.currentTarget.id, //
       success: function () {
