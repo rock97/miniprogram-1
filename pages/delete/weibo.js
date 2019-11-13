@@ -104,7 +104,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goto1: function (data) {
+  goto: function (data) {
     wx.navigateTo({
       url: '../out/out?src=' + data.currentTarget.id, //
       success: function () {
